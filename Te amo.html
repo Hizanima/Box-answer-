@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jornada do Café</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@100..400&display=swap');
+        
+        body {
+            background-color: #555555; /* Fundo cinza */
+            color: #ffffff; /* Cor do texto branca */
+            font-family: 'Playwrite AU SA', serif; /* Fonte personalizada */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Mudei para "flex-start" para garantir que o conteúdo fique alinhado no topo */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 15px; /* Texto mais compacto */
+            line-height: 1.2; /* Menor espaçamento entre linhas */
+            margin-top: -40px; /* Para garantir que o texto fique distante da parte superior */
+            margin-bottom: 50px; /* Ajuste o espaço abaixo do texto */
+            position: relative;
+            z-index: 2;
+        }
+
+        .new-image {
+            width: 200px;  /* Ajuste o tamanho da imagem conforme necessário */
+            margin-bottom: 30px;  /* Espaço entre a imagem e o texto */
+            position: relative;
+            z-index: 1; /* Garante que fique acima do fundo mas abaixo do texto */
+        }
+
+        .coffee-container {
+            position: absolute; /* Fixa o café na tela */
+            top: 250px; /* Coloque o café mais para baixo (ajuste esse valor conforme necessário) */
+            left: 50%; 
+            transform: translateX(-50%); /* Centraliza o café */
+            z-index: 1; /* Fica atrás do texto */
+        }
+
+        .coffee-gif {
+            width: 300px; /* Ajuste o tamanho do café */
+            height: auto;
+            cursor: pointer;
+        }
+
+        .path-line {
+            position: absolute;
+            bottom: -80px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-color: #555555; /* Cor da linha igual ao fundo */
+        }
+
+        .cube {
+            position: absolute;
+            bottom: 20px; /* Ajuste para mover o cubo para cima */
+            right: -150px;
+            width: 200px; /* Tamanho do cubo */
+            height: 200px;
+            background: url('https://i.imgur.com/3iuNr9h.gif') no-repeat center center;
+            background-size: contain;
+            animation: move-left 6s linear infinite;
+            z-index: 0; /* Coloca o cubo atrás do café */
+        }
+
+        @keyframes move-left {
+            0% {
+                right: -150px;
+            }
+            100% {
+                right: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nova imagem colocada acima do texto -->
+    <img class="new-image" src="https://i.postimg.cc/t4T152jG/558-Sem-T-tulo-20250109133233.png" alt="Imagem acima do texto">
+
+    <h1>
+        Nada como o calor de um café <br>
+        para despertar a alma antes <br>
+        de qualquer peripécia... <br><br>
+        Mas um café frio? <br>
+        não vês que o vapor do café <br>
+        não emana mais? <br><br>
+        Ora, por que não trazer à tona o ardor <br>
+        e esquentar um pouco o momento?
+    </h1>
+
+    <!-- Imagem do café -->
+    <div class="coffee-container">
+        <a href="https://youtube.com/shorts/deKwcOIj5G0?si=Axwi957w4tFSbhQD" target="_blank">
+            <img class="coffee-gif" src="https://i.imgur.com/eE1wqe6.gif" alt="GIF de uma xícara de café">
+        </a>
+    </div>
+
+    <div class="path-line"></div>
+    <div class="cube"></div>
+</body>
+</html>

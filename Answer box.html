@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixa de Texto com Coração</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet"> <!-- Fonte cursiva -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Dancing Script', cursive;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #555555;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-image: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXlxY2RoeWdkeHhkOWI0YmRjNnp6dGJ3YjRxZ2p3OGludWk1eGR5aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/uvLk8Cti5JGOLiwUs0/giphy.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            max-width: 400px;
+            width: 100%;
+            min-height: 300px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-top: -90px;
+            z-index: 2;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: white;
+            text-shadow: 1px 1px 3px black;
+            margin-bottom: 20px;
+            margin-top: 50px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            max-width: 350px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: 'Dancing Script', cursive;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #c62828;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #b71c1c;
+        }
+
+        #heart-container {
+            visibility: hidden;
+            opacity: 0;
+            margin-top: 20px;
+            text-align: center;
+            transition: visibility 0s, opacity 3s ease-out;
+        }
+
+        #heart-container.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        #heart-link {
+            font-size: 40px;
+            color: #FF0000;
+            text-decoration: none;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        #heart-link:hover {
+            color: #FF4500;
+            transform: scale(1.2);
+        }
+
+        .gif {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .gif img {
+            max-width: 200px;
+            max-height: 200px;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 2s ease-out;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+            font-size: 40px;
+            color: white;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            text-shadow: 2px 2px 5px black; /* Adicionando a sombra */
+        }
+
+        .fade-in.show {
+            opacity: 1;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="type="audio/mp3">
+        Seu navegador não suporta a tag de áudio.
+    </audio>
+
+    <div id="heart-container">
+        <a id="heart-link" href="https://youtu.be/qhn8NF5nWWw?si=PS2tAl2P-fzQlSxm" target="_blank">&#10084;</a>
+    </div>
+
+    <div class="container" id="content">
+        <h2>Qual a frase de 3 palavras que completa o final do poema no QR code?</h2>
+        <input type="text" id="user-input" placeholder="Complete nosso poema de amor...">
+        <button onclick="checkWord()">Manifestar</button>
+    </div>
+
+    <div class="gif">
+        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExazRvaWtpc21zNncydjFxeDQ3bTJtdHZ5dzVhMDJueGJ1OXM5M2F1byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XH8aeqTIzOxxcpQP7l/giphy.gif" alt="Personagem">
+    </div>
+
+    <div id="congratulations" class="fade-in hidden">
+        Parabéns meu amor ❤️
+    </div>
+
+    <script>
+        function checkWord() {
+            var input = document.getElementById("user-input").value.toLowerCase();
+            var heartContainer = document.getElementById("heart-container");
+            var body = document.body;
+            var congratulations = document.getElementById("congratulations");
+            var content = document.getElementById("content");
+
+            var keyword = "eu te amo"; // Palavra-chave que libera o coração
+
+            if (input === keyword) {
+                heartContainer.classList.add("show");
+            } else {
+                heartContainer.classList.remove("show");
+            }
+
+            // Fade out de todos os elementos (em 2 segundos)
+            content.classList.add("fade-out");
+            var gif = document.querySelector(".gif");
+            gif.classList.add("fade-out");
+
+            // Espera a transição de fade-out antes de exibir o texto de parabéns
+            setTimeout(function() {
+                congratulations.classList.remove("hidden"); // Torna o texto visível
+                congratulations.classList.add("show"); // Exibe o texto de parabéns
+            }, 2000); // Exibe após 2 segundos
+
+            // Redireciona após 4 segundos (tempo do fade-out + tempo do fade-in)
+            setTimeout(function() {
+                window.location.href = "https://youtu.be/qhn8NF5nWWw?si=PS2tAl2P-fzQlSxm";
+            }, 3000); // Redireciona após 3 segundos (2 segundos de fade-out + 1 segundo de fade-in)
+        }
+    </script>
+</body>
+</html>
