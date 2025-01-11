@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caixa de Texto com Link</title>
+    <title>Caixa de Texto com Coração</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,103 +12,124 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column; /* Coloca os elementos na vertical */
             height: 100vh;
-            background-color: #501C1C; /* Cor de fundo da página */
+            background-color: #555555; /* Cor de fundo da página */
         }
+
         .container {
-            position: relative; /* Para poder posicionar o GIF sobre a caixa */
+            position: relative; /* Para poder posicionar corretamente */
             text-align: center;
             padding: 20px;
             border-radius: 10px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-image: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExYXlxY2RoeWdkeHhkOWI0YmRjNnp6dGJ3YjRxZ2p3OGludWk1eGR5aSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/uvLk8Cti5JGOLiwUs0/giphy.gif'); /* Substitua pelo link da sua imagem */
+            background-size: contain; /* Faz com que a imagem se ajuste sem cortar */
+            background-position: center; /* Centraliza a imagem */
+            background-repeat: no-repeat; /* Garante que a imagem não se repita */
             width: 80%;
             max-width: 600px;
-            z-index: 2; /* Coloca a caixa de conteúdo acima da imagem */
+            min-height: 300px; /* Garante que a altura mínima da caixa não mude */
+            z-index: 2; /* Garante que a caixa fique acima do GIF */
+            margin-top: -50px; /* Mover a caixa para cima */
         }
-        #link-container {
+
+        #heart-container {
             display: none;
-            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center; /* Centraliza o conteúdo */
         }
+
+        #heart-link {
+            font-size: 40px; /* Tamanho do coração */
+            color: #FF0000; /* Cor do coração */
+            text-decoration: none; /* Remove o sublinhado */
+        }
+
+        #heart-link:hover {
+            color: #FF4500; /* Cor do coração ao passar o mouse */
+            transform: scale(1.2); /* Aumenta o tamanho ao passar o mouse */
+            transition: transform 0.2s ease-in-out;
+        }
+
         input[type="text"] {
             padding: 10px;
             width: 80%;
             margin: 10px 0;
             border-radius: 5px;
             border: 1px solid #ccc;
+            margin-top:-20px;
         }
+
         button {
             padding: 10px 20px;
             border-radius: 5px;
-            background-color: #D32F2F; /* Cor do botão vermelho */
+            background-color: #c62828; /* Cor do botão vermelho */
             color: white;
             border: none;
             cursor: pointer;
         }
+
         button:hover {
-            background-color: #C62828; /* Cor do botão quando passa o mouse */
+            background-color: #b71c1c; /* Cor do botão quando passa o mouse */
         }
+
         h2 {
             font-size: 18px;
-            margin-bottom: 20px;
-        }
-        /* Personalizando o link */
-        #special-link {
-            color: #FF6347; /* Cor do link */
-            text-decoration: none; /* Remove o sublinhado */
-        }
-        #special-link:hover {
-            color: #FF4500; /* Cor do link quando passa o mouse */
-        }
-        #special-link:visited {
-            color: #8B0000; /* Cor do link visitado */
+            margin-bottom: 30px; /* Aumentado o espaço entre o enunciado e o campo de texto */
+            color: white; /* Cor do texto */
+            text-shadow: 1px 1px 3px black; /* Adiciona sombra ao texto */
         }
 
-        /* GIF posicionado sobre a caixa */
-.gif {
-    position: absolute;
-    bottom: 170px; /* Ajusta a posição do GIF para que ele fique acima da caixa */
-    left: 50%; /* Centraliza o GIF horizontalmente */
-    transform: translateX(-50%); /* Garante a centralização exata */
-}
+        /* GIF posicionado abaixo da caixa */
+        .gif {
+            position: absolute;
+            bottom: 10px; /* Ajusta a posição do GIF */
+            left: 50%;
+            transform: translateX(-50%); /* Garante a centralização exata */
+            z-index: 1; /* Garante que o GIF fique abaixo da caixa */
+        }
 
-.gif img {
-    max-width: 250px;  /* Limita a largura máxima */
-    max-height: 250px; /* Limita a altura máxima */
-}
-}
-}*/
-            z-index: 1; /* Coloca o GIF abaixo da caixa de conteúdo */
+        .gif img {
+            max-width: 250px;  /* Limita a largura máxima */
+            max-height: 250px; /* Limita a altura máxima */
         }
     </style>
 </head>
 <body>
+<audio autoplay loop>
+  <source src="https://github.com/Hizanima/Musica/raw/refs/heads/main/zapsplat_household_radio_alarm_clock_set_down_wood_bedside_cabinet_002_85519.mp3" type="audio/mp3">
+  Seu navegador não suporta a tag de áudio.
+</audio>
+<!-- Coração na parte superior -->
+<div id="heart-container">
+    <a id="heart-link" href="https://youtu.be/qhn8NF5nWWw?si=PS2tAl2P-fzQlSxm" target="_blank">&#10084; Clique no coração</a> <!-- Ícone do coração -->
+</div>
 
-<div class="container">
-    <div class="gif">
-        <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWNxdTV2MzRraGFkaG00Y2M5OHhxbGR2dXkwNHp3ZHF4Nnd3YXh1diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/QERa6qfZXp5m3CJ8vs/giphy.webp" alt="Personagem">
-    </div>
-    <h2>qual a frase de 3 palavras que completa o final do poema no qr code?</h2>
+<div class="container" style="padding-top: 150px;"> <!-- Adicionando padding-top -->
+    <h2>Qual a frase de 3 palavras que completa o final do poema no QR code?</h2>
     <input type="text" id="user-input" placeholder="Digite aqui...">
     <button onclick="checkWord()">Manifestar</button>
+    <position: absolute
+    
+</div>
+</div>
 
-    <div id="link-container">
-        <a id="special-link" href="https://www.exemplo.com" target="_blank">Clique aqui para acessar o link!</a>
-    </div>
+<div class="gif">
+    <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExazRvaWtpc21zNncydjFxeDQ3bTJtdHZ5dzVhMDJueGJ1OXM5M2F1byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XH8aeqTIzOxxcpQP7l/giphy.gif" alt="Personagem">
 </div>
 
 <script>
     function checkWord() {
         var input = document.getElementById("user-input").value.toLowerCase();
-        var linkContainer = document.getElementById("link-container");
+        var heartContainer = document.getElementById("heart-container");
 
-        // Palavra chave para liberar o link
-        var keyword = "eu te amo"; // Palavra-chave que libera o link
+        // Palavra-chave para liberar o coração
+        var keyword = "eu te amo"; // Palavra-chave que libera o coração
 
         if (input === keyword) {
-            linkContainer.style.display = "block";
+            heartContainer.style.display = "block";
         } else {
-            linkContainer.style.display = "none";
+            heartContainer.style.display = "none";
         }
     }
 </script>
